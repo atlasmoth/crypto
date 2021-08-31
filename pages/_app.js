@@ -4,6 +4,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
+        {/* embedding css here because of a weird Next.js bug */}
         <style>
           {`
               *,
@@ -18,7 +19,10 @@ function MyApp({ Component, pageProps }) {
               select {
                 font: inherit;
               }
-
+              a {
+                text-decoration : none;
+                color : inherit;
+              }
               input[type="search"] {
                 border: none;
                 outline: none;
@@ -111,6 +115,25 @@ function MyApp({ Component, pageProps }) {
               }
               .main-article .header .search {
                 flex-grow: 1;
+              }
+              .window {
+                overflow-y : scroll;
+                height : 40vh;
+              }
+              .box-crypto{
+                display : flex;
+                justify-content : space-between;
+                align-items : center;
+                padding : 1rem;
+              }
+              .title{
+                text-transform : uppercase;
+                font-weight : bold;
+              }
+              .grow-crypto{
+                flex-grow : 1;
+                max-wdith : 100%;
+                max-height : 20vh;
               }
             `}
         </style>

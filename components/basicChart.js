@@ -1,72 +1,50 @@
-import React, { useEffect } from "react";
-import callAPI from "./../utils/api";
+import React, { memo, useEffect } from "react";
 
-function App() {
+const InnerChart = ({ data }) => {
   useEffect(() => {
-    fetchData().then((chartData) => {
-      console.log(chartData);
-      initChart(chartData);
-    });
+    Plotly.newPlot(
+      data.id,
+      [
+        {
+          name: "Price ($)",
+          x: Array.from(data.sparkline_in_7d.price).map((i, index) => index),
+          y: data.sparkline_in_7d.price,
+          xaxis: "x",
+          yaxis: "y",
+          type: "scatter",
+          mode: "lines+markers",
+          marker: { color: "#000", size: 2 },
+        },
+      ],
+      {
+        autosize: true,
+        height: "50",
+        paper_bgcolor: "transparent",
+        plot_bgcolor: "transparent",
+        xaxis: {
+          autorange: true,
+          showgrid: false,
+          zeroline: false,
+          showline: false,
+          autotick: true,
+          ticks: "",
+          showticklabels: false,
+        },
+        yaxis: {
+          autorange: true,
+          showgrid: false,
+          zeroline: false,
+          showline: false,
+          autotick: true,
+          ticks: "",
+          showticklabels: false,
+        },
+      },
+      { responsive: true, displayModeBar: false, aspectRatio: { x: 1, y: 10 } }
+    );
   }, []);
 
-  const fetchData = async () => {
-    let data = { index: [], price: [], volumes: [] };
-    let result = await callAPI(
-      "https://api.coingecko.com/api/v3/coins/ethereum/market_chart?vs_currency=usd&days=1&interval=1m"
-    );
-    for (const item of result.prices) {
-      data.index.push(item[0]);
-      data.price.push(item[1]);
-    }
-    for (const item of result.total_volumes) data.volumes.push(item[1]);
-    return data;
-  };
+  return <div id={data.id} className="grow-crypto"></div>;
+};
 
-  const initChart = (data) => {
-    let trace_price = {
-      name: "Price ($)",
-      x: data.index.map((t) => new Date(t)),
-      y: data.price,
-      xaxis: "x",
-      yaxis: "y1",
-      type: "scatter",
-      mode: "lines+markers",
-      marker: { color: "#333", size: 3 },
-    };
-
-    let layout = {
-      autosize: true,
-      height: "100%",
-      margin: {
-        l: 50,
-        r: 20,
-        t: 35,
-        pad: 3,
-      },
-      showlegend: false,
-      xaxis: {
-        domain: [1, 1],
-        anchor: "y2",
-      },
-      yaxis: {
-        domain: [0.1, 1],
-        anchor: "x",
-      },
-      yaxis2: {
-        showticklabels: false,
-        domain: [0, 0.1],
-        anchor: "x",
-      },
-      grid: {
-        roworder: "bottom to top",
-      },
-    };
-    let config = { responsive: true };
-    let series = [trace_price];
-    Plotly.newPlot("chart", series, layout, config);
-  };
-
-  return <div id="chart"></div>;
-}
-
-export default App;
+export default memo(InnerChart);
