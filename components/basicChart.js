@@ -12,13 +12,19 @@ const InnerChart = ({ data }) => {
           xaxis: "x",
           yaxis: "y",
           type: "scatter",
-          mode: "lines+markers",
-          marker: { color: "#000", size: 2 },
+          mode: "lines",
+          line: { color: "#584051", size: 2, shape: "spline" },
         },
       ],
       {
         autosize: true,
         height: "50",
+        margin: {
+          l: 0,
+          r: 0,
+          b: 0,
+          t: 0,
+        },
         paper_bgcolor: "transparent",
         plot_bgcolor: "transparent",
         xaxis: {
@@ -40,7 +46,7 @@ const InnerChart = ({ data }) => {
           showticklabels: false,
         },
       },
-      { responsive: true, displayModeBar: false, aspectRatio: { x: 1, y: 10 } }
+      { responsive: true, displayModeBar: false }
     );
   }, []);
 

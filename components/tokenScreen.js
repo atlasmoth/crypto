@@ -1,6 +1,11 @@
+import { useEffect } from "react";
 import DateRanger from "./dateRange";
+import MainChart from "./mainChart";
 
 export default function TokenScreen({ data }) {
+  useEffect(() => {
+    console.log(data);
+  }, []);
   return (
     <div className="container">
       <aside className="container-aside">
@@ -20,15 +25,18 @@ export default function TokenScreen({ data }) {
                 autoComplete="off"
               />
             </div>
-            <div className="box">
+            <div>
               <DateRanger />
             </div>
           </header>
           <div className="box box-split">
-            <h2>Token</h2>
+            <MainChart data={data.secondary} />
           </div>
           <div className="box box-split">
             <h3>Exchange</h3>
+            <div className="primary-box constrain">
+              Exchange <i className="fas fa-arrow-right"></i>
+            </div>
           </div>
         </article>
         <aside className="main-aside">
@@ -37,10 +45,7 @@ export default function TokenScreen({ data }) {
               <p>Info Card</p>
             </div>
             <div className="primary-box">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum
-              ullam nemo eligendi distinctio? Dicta, nam, placeat cupiditate
-              consectetur magni quisquam fuga alias fugit veniam delectus magnam
-              aliquam mollitia, velit necessitatibus?
+              <p>{String(data.primary.description.en.substr(0, 200))}</p>
             </div>
           </div>
         </aside>

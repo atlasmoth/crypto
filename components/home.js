@@ -36,7 +36,7 @@ export default function HomeComponent({ data }) {
                         {m.id}&nbsp;({m.symbol})
                       </div>
                       <BasicChart data={m} />
-                      <div>
+                      <div className="green" style={{ margin: "0 10px" }}>
                         {Intl.NumberFormat("en-US", {
                           style: "currency",
                           currency: "USD",

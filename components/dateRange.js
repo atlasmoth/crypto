@@ -13,6 +13,7 @@ export default function DateRange() {
 
     $("#reportrange").daterangepicker(
       {
+        opens: "right",
         startDate: start,
         endDate: end,
         ranges: {
@@ -37,8 +38,8 @@ export default function DateRange() {
   }, []);
   return (
     <div id="reportrange" className="dateRange">
-      <i className="fa fa-calendar"></i>&nbsp;
-      <span></span> <i className="fa fa-caret-down"></i>
+      <i className="fas fa-calendar"></i>&nbsp;
+      <span></span> <i className="fas fa-caret-down"></i>
     </div>
   );
 }
