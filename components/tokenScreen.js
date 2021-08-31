@@ -1,3 +1,5 @@
+import DateRanger from "./dateRange";
+
 export default function TokenScreen({ data }) {
   return (
     <div className="container">
@@ -19,7 +21,7 @@ export default function TokenScreen({ data }) {
               />
             </div>
             <div className="box">
-              <p>Hello Box</p>
+              <DateRanger />
             </div>
           </header>
           <div className="box box-split">

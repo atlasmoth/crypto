@@ -5,6 +5,23 @@ function MyApp({ Component, pageProps }) {
     <>
       <Head>
         {/* embedding css here because of a weird Next.js bug */}
+        <script
+          type="text/javascript"
+          src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"
+        ></script>
+        <script
+          type="text/javascript"
+          src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"
+        ></script>
+        <script
+          type="text/javascript"
+          src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"
+        ></script>
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"
+        />
         <style>
           {`
               *,
@@ -13,6 +30,11 @@ function MyApp({ Component, pageProps }) {
                 box-sizing: border-box;
                 margin: 0px;
                 padding: 0px;
+              }
+              :root{
+                --main-dark: #17151d;
+                --light-dark: #241f2a;
+                --blue: #2c64bc;
               }
               input,
               button,
@@ -44,9 +66,7 @@ function MyApp({ Component, pageProps }) {
                 padding: 1rem;
                 background-color: var(--main-dark);
                 color: #fff;
-                --main-dark: #17151d;
-                --light-dark: #241f2a;
-                --blue: #2c64bc;
+                
                 margin: "0px";
               }
               .box {
@@ -134,6 +154,14 @@ function MyApp({ Component, pageProps }) {
                 flex-grow : 1;
                 max-wdith : 100%;
                 max-height : 20vh;
+              }
+              .dateRange {
+                background: var(--light-dark); 
+                cursor: pointer;
+                 padding: 5px 10px; 
+                 border: 1px solid #fff;
+                 width: 100%;
+                 color : #fff;
               }
             `}
         </style>
