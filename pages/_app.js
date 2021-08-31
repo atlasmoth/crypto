@@ -206,7 +206,18 @@ input[type="search"]::placeholder {
 .green {
   color: var(--green);
 }
-
+.side{
+  display : flex;
+  justify-content : space-between;
+  align-items : flex-end;
+  flex-wrap : wrap;
+}
+.side>div{
+  flex-grow : 1;
+}
+.side > div:nth-of-type(2){
+  margin-left : 2rem;
+}
             `}
         </style>
         <title>Crypto App</title>
