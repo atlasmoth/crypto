@@ -21,6 +21,10 @@ a {
   text-decoration: none;
   color: inherit;
 }
+.grid {
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-auto-rows: minmax(100px, auto);
+}
 input[type="search"] {
   border: none;
   outline: none;

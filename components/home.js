@@ -44,7 +44,10 @@ export default function HomeComponent({ data }) {
                         {m.id}&nbsp;({m.symbol})
                       </div>
                       <BasicChart data={m} />
-                      <div className="green" style={{ margin: "0 10px" }}>
+                      <div
+                        className={m.price_change_24h > 0 ? "green" : "red"}
+                        style={{ margin: "0 10px" }}
+                      >
                         {Intl.NumberFormat("en-US", {
                           style: "currency",
                           currency: "USD",
@@ -62,21 +65,44 @@ export default function HomeComponent({ data }) {
               ))}
             </div>
           </div>
-          <div className="box box-split">
+          <div className="box box-split window">
             <h2>All Coins</h2>
+            <div className="grid">
+              {data.all.map((d) => (
+                <div key={d.id} className="primary-box grid-box" key={d.symbol}>
+                  <Link href={`/token/${d.id}`}>
+                    <a>
+                      {d.name} ({d.symbol})
+                    </a>
+                  </Link>
+                </div>
+              ))}
+            </div>
           </div>
         </article>
         <aside className="main-aside">
           <div className="box">
-            <div className="info">
-              <p>Info Card</p>
-            </div>
-            <div className="primary-box">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum
-              ullam nemo eligendi distinctio? Dicta, nam, placeat cupiditate
-              consectetur magni quisquam fuga alias fugit veniam delectus magnam
-              aliquam mollitia, velit necessitatibus?
-            </div>
+            <div className="title">Events</div>
+            {data.events.map((d) => (
+              <div className="primary-box box-split" key={d.title}>
+                <p>{String(d.description.substr(0, 200))}</p>
+                <div style={{ textAlign: "right" }}>
+                  <a
+                    style={{
+                      padding: "5px",
+                      borderRadius: "10px",
+                      backgroundColor: "var(--main-dark)",
+                      color: "var(--blue) !important",
+                      margin: "10px",
+                    }}
+                    href={d.website}
+                    target="_blank"
+                  >
+                    <i className="fas fa-link"></i>
+                  </a>
+                </div>
+              </div>
+            ))}
           </div>
         </aside>
       </main>

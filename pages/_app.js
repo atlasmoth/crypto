@@ -49,6 +49,9 @@ button,
 select {
   font: inherit;
 }
+img {
+  max-width : 100%;
+}
 a {
   text-decoration: none;
   color: inherit;
@@ -128,17 +131,38 @@ input[type="search"]::placeholder {
   flex-direction : column;
   height : 100%;
 }
-@media only screen and (max-width: 800px) {
-  .date {
+.date {
   flex-grow : 1;
-  margin-top : 1rem;
+  margin-left : 1rem;
+  flex-basis : 300px;
 }
+.grid{
+  display : grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-auto-rows : minmax(100px,auto);
+  grid-gap : 10px;
+  padding : 1rem 5px;
+}
+.grid-box{
+  
+  display : flex;
+  align-items : center;
+  justify-content : center;
+  font-size : 1.3rem;
+}
+@media only screen and (max-width: 960px) {
+  
+  .side>div{
+  flex-grow : 1;
+}
+  .date {
+    margin-top : 1rem;
+    margin-left : 0px;
+  }
   :root {
     font-size : 12px;
   }
-  .main-aside {
-    display: none;
-  }
+  
   .main-aside .box {
     width: 100%;
   }
@@ -204,6 +228,7 @@ input[type="search"]::placeholder {
 }
 .main-article .header .search {
   flex-grow: 1;
+  flex-basis : 500px;
 }
 .window {
   overflow-y: scroll;
@@ -235,18 +260,18 @@ input[type="search"]::placeholder {
 .green {
   color: var(--green);
 }
+.red {
+  color : tomato;
+}
 .side{
-  display : flex;
-  justify-content : space-between;
+  display : grid;
+  grid-template-columns : repeat(auto-fit,minmax(300px,1fr));
+  grid-auto-rows : auto;
   align-items : flex-end;
-  flex-wrap : wrap;
+  justify-content : space-between;
 }
-.side>div{
-  flex-grow : 1;
-}
-.side > div:nth-of-type(2){
-  margin-left : 2rem;
-}
+
+
 .division {
   display : flex;
   justify-content : space-between;
