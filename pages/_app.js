@@ -1,33 +1,11 @@
 import Head from "next/head";
+// import "./../styles/main.css";
 
 function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        {/* embedding css here because of a weird Next.js bug */}
-        <script
-          type="text/javascript"
-          src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"
-        ></script>
-        <script
-          type="text/javascript"
-          src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"
-        ></script>
-        <script
-          type="text/javascript"
-          src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"
-        ></script>
-        <link
-          rel="stylesheet"
-          type="text/css"
-          href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"
-        />
-        <link
-          rel="stylesheet"
-          href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
-          crossOrigin="anonymous"
-        />
+        <title>Crypto App</title>
         <style>
           {`
               *,
@@ -279,7 +257,34 @@ input[type="search"]::placeholder {
 }
             `}
         </style>
-        <title>Crypto App</title>
+        {/* embedding css here because of a weird Next.js bug */}
+        <script
+          type="text/javascript"
+          src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"
+          defer
+        ></script>
+        <script
+          type="text/javascript"
+          src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"
+          defer
+        ></script>
+        <script
+          type="text/javascript"
+          src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"
+          defer
+        ></script>
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"
+        />
+        <link
+          rel="stylesheet"
+          href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+          crossOrigin="anonymous"
+        />
+
         <script src="https://cdn.plot.ly/plotly-latest.min.js" defer></script>
       </Head>
       <Component {...pageProps} />
