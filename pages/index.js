@@ -19,6 +19,6 @@ export async function getStaticProps() {
   } catch (error) {
     console.log(error);
   } finally {
-    return { props: { data }, revalidate: 5 };
+    return { props: { data }, revalidate: 120 };
   }
 }

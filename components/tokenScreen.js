@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export default function TokenScreen({ data }) {
   const [state, setState] = useState({ start: null, end: null });
-  const [chartData, setChartData] = useState(data.secondary);
+  const [chartData, setChartData] = useState();
 
   const ticker = data.primary.tickers.find((t) => t.target === "USD");
 
@@ -70,7 +70,7 @@ export default function TokenScreen({ data }) {
                 {data.primary.market_data.ath_change_percentage.usd}
               </h3>
             </div>
-            <MainChart data={chartData} />
+            {chartData && <MainChart data={chartData} />}
           </div>
           <div className="side">
             <div className="box box-split" style={{}}>
