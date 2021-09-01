@@ -4,6 +4,7 @@ function Search({ list }) {
   const [display, setDisplay] = useState(false);
   const [keywords, setKeywords] = useState([]);
   const [currKey, setCurrKey] = useState("");
+  // fuzzy search
   useEffect(() => {
     setKeywords(
       list

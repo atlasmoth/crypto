@@ -5,7 +5,7 @@ import Search from "./search";
 export default function HomeComponent({ data }) {
   return (
     <div className="container">
-      <aside className="container-aside">
+      <aside className="container -aside">
         <div className="box burger">🍔</div>
         <div className="box panel">
           <div
