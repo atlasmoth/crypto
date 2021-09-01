@@ -5,7 +5,7 @@ export default function Token(props) {
   return <TokenScreen data={props.data} />;
 }
 
-export async function getStaticProps(ctx) {
+export async function getServerSideProps(ctx) {
   let data = {};
   const {
     params: { token },
@@ -23,18 +23,6 @@ export async function getStaticProps(ctx) {
   } catch (error) {
     console.log(error);
   } finally {
-    return { props: { data }, revalidate: 10 };
-  }
-}
-export async function getStaticPaths() {
-  let paths = [];
-
-  try {
-    const keys = await api(`https://api.coingecko.com/api/v3/coins/list`);
-    paths = keys.map((d) => ({ params: { token: d.id } }));
-  } catch (error) {
-    console.log(error);
-  } finally {
-    return { paths, fallback: "blocking" };
+    return { props: { data } };
   }
 }

@@ -117,6 +117,9 @@ input[type="search"]::placeholder {
   flex-grow: 1;
 }
 @media only screen and (max-width: 800px) {
+  :root {
+    font-size : 12px;
+  }
   .main-aside {
     display: none;
   }
@@ -179,7 +182,7 @@ input[type="search"]::placeholder {
 }
 .window {
   overflow-y: scroll;
-  height: 40vh;
+  height: 50vh;
 }
 .box-crypto {
   display: flex;
@@ -217,6 +220,11 @@ input[type="search"]::placeholder {
 }
 .side > div:nth-of-type(2){
   margin-left : 2rem;
+}
+.division {
+  display : flex;
+  justify-content : space-between;
+  padding : 5px 10px;
 }
             `}
         </style>
