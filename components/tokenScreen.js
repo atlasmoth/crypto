@@ -29,14 +29,14 @@ export default function TokenScreen({ data }) {
       <aside className="container-aside">
         <div className="box burger">🍔</div>
         <div className="box panel">
-          <div className="box" style={{ textAlign: "center" }}>
-            <Link href="/">
-              <a>
-                <i className="fas fa-indent"></i>
-              </a>
-            </Link>
+          <div
+            className="box"
+            onClick={() => (location.href = "/")}
+            style={{ cursor: "pointer" }}
+          >
+            <i className="fas fa-indent"></i>
           </div>
-          <div className="primary-box" style={{ textAlign: "center" }}>
+          <div className="primary-box">
             <span>
               <i className="far fa-chart-bar"></i>
             </span>
