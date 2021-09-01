@@ -74,7 +74,9 @@ input[type="search"]::placeholder {
   padding: 1rem;
   background-color: var(--main-dark);
   color: #fff;
-
+  grid-template-rows: minmax(100vh,auto);
+    align-content: flex-start;
+    grid-template-rows: minmax(100vh,auto);
   margin: "0px";
 }
 .box {
@@ -98,6 +100,10 @@ input[type="search"]::placeholder {
 }
 .panel {
   margin-top: 2rem;
+  align-items : center;
+  display : flex;
+  flex-direction : column;
+  flex-grow : 1;
 }
 .container-main {
   margin: 0px 1rem;
@@ -116,7 +122,17 @@ input[type="search"]::placeholder {
   flex-shrink: 0;
   flex-grow: 1;
 }
+.container-aside{
+  display :flex;
+  max-width : 50px;
+  flex-direction : column;
+  height : 100%;
+}
 @media only screen and (max-width: 800px) {
+  .date {
+  flex-grow : 1;
+  margin-top : 1rem;
+}
   :root {
     font-size : 12px;
   }
@@ -127,16 +143,25 @@ input[type="search"]::placeholder {
     width: 100%;
   }
   .container {
-    grid-template-rows: auto;
-    min-height: 100vh;
-    align-content: flex-start;
+    grid-template-rows : auto;
   }
   .container-aside {
-    grid-column-start: 1;
+    grid-column: 1 / -1;
+    align-items : center;
+    flex-direction : row;
+    max-width : 100%;
+    height : auto;
+  }
+  .panel {
+    margin-top : 0;
+    margin-left : 1rem;
+    display : flex;
+    flex-grow : 1;
+    flex-direction : row;
   }
   .container-main {
     grid-row: 2/ -1;
-    grid-column-start: 1;
+    grid-column: 1 / -1;
     margin: 1rem 0;
   }
 }
@@ -205,6 +230,7 @@ input[type="search"]::placeholder {
   color: #fff;
   border-radius: 1rem;
   padding: 1rem 0.5rem;
+  text-align : center;
 }
 .green {
   color: var(--green);

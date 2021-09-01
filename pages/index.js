@@ -3,9 +3,6 @@ import HomeComponent from "../components/home";
 import api from "./../utils/api";
 
 export default function Index({ data }) {
-  useEffect(() => {
-    console.log(data);
-  }, []);
   return <HomeComponent data={data} />;
 }
 

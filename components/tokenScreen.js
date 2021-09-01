@@ -1,16 +1,41 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import DateRanger from "./dateRange";
 import MainChart from "./mainChart";
+import api from "./../utils/api";
 
 export default function TokenScreen({ data }) {
+  const [state, setState] = useState({ start: null, end: null });
+  const [chartData, setChartData] = useState(data.secondary);
+
   useEffect(() => {
-    console.log(data);
-  }, []);
+    if (state?.start && state?.end) {
+      api(
+        `https://api.coingecko.com/api/v3/coins/${
+          data.primary.id
+        }/market_chart/range?vs_currency=usd&from=${
+          new Date(state.start).getTime() / 1000
+        }&to=${new Date(state.end).getTime() / 1000}`
+      )
+        .then((d) => setChartData(d))
+        .catch(console.log);
+    }
+  }, [state]);
   return (
     <div className="container">
       <aside className="container-aside">
         <div className="box burger">🍔</div>
-        <div className="box panel">Icons</div>
+        <div className="box panel">
+          <div className="box" style={{ textAlign: "center" }}>
+            <span>
+              <i className="fas fa-indent"></i>
+            </span>
+          </div>
+          <div className="primary-box" style={{ textAlign: "center" }}>
+            <span>
+              <i className="far fa-chart-bar"></i>
+            </span>
+          </div>
+        </div>
       </aside>
       <main className="container-main">
         <article className="main-article">
@@ -25,12 +50,12 @@ export default function TokenScreen({ data }) {
                 autoComplete="off"
               />
             </div>
-            <div>
-              <DateRanger />
+            <div className="date">
+              <DateRanger setState={setState} />
             </div>
           </header>
           <div className="box box-split">
-            <MainChart data={data.secondary} />
+            <MainChart data={chartData} />
           </div>
           <div className="side">
             <div className="box box-split">

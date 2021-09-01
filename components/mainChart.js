@@ -41,7 +41,7 @@ function MainChart({ data }) {
       },
       { responsive: true }
     );
-  }, []);
+  }, [data]);
   return <div id="mainChart"></div>;
 }
 export default memo(MainChart);

@@ -6,7 +6,18 @@ export default function HomeComponent({ data }) {
     <div className="container">
       <aside className="container-aside">
         <div className="box burger">🍔</div>
-        <div className="box panel">Icons</div>
+        <div className="box panel">
+          <div className="primary-box">
+            <span>
+              <i className="fas fa-indent"></i>
+            </span>
+          </div>
+          <div className="box">
+            <span>
+              <i className="far fa-chart-bar"></i>
+            </span>
+          </div>
+        </div>
       </aside>
       <main className="container-main">
         <article className="main-article">
@@ -20,9 +31,6 @@ export default function HomeComponent({ data }) {
                 placeholder="search"
                 autoComplete="off"
               />
-            </div>
-            <div className="box">
-              <p>Hello Box</p>
             </div>
           </header>
           <div className="box box-split window">

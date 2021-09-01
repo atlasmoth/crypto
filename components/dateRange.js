@@ -1,11 +1,15 @@
 import { useEffect } from "react";
 
-export default function DateRange() {
+export default function DateRange({ setState }) {
   useEffect(() => {
     var start = moment().subtract(29, "days");
     var end = moment();
 
     function cb(start, end) {
+      setState({
+        start: new Date(start.format("MMMM D, YYYY")),
+        end: new Date(end.format("MMMM D, YYYY")),
+      });
       $("#reportrange span").html(
         start.format("MMMM D, YYYY") + " - " + end.format("MMMM D, YYYY")
       );
