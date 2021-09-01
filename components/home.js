@@ -9,9 +9,11 @@ export default function HomeComponent({ data }) {
         <div className="box burger">🍔</div>
         <div className="box panel">
           <div className="primary-box">
-            <span>
-              <i className="fas fa-indent"></i>
-            </span>
+            <Link href="/">
+              <a>
+                <i className="fas fa-indent"></i>
+              </a>
+            </Link>
           </div>
           <div className="box">
             <span>

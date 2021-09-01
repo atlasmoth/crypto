@@ -57,7 +57,7 @@ function Search({ list }) {
             position: absolute;
             left: 0;
             right: 0;
-            top: 30px;
+            top: 50px;
             padding: 1rem;
             z-index: 2;
           }

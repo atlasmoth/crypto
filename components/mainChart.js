@@ -9,6 +9,7 @@ function MainChart({ data }) {
       [
         {
           name: "Price ($)",
+          text: [...data.prices.map((p) => new Date(p[0]).toDateString())],
           x: data.prices.map((p) => new Date(p[0]).toISOString()),
           y: freshData,
           xaxis: "x",

@@ -3,6 +3,7 @@ import DateRanger from "./dateRange";
 import MainChart from "./mainChart";
 import api from "./../utils/api";
 import Search from "./search";
+import Link from "next/link";
 
 export default function TokenScreen({ data }) {
   const [state, setState] = useState({ start: null, end: null });
@@ -29,9 +30,11 @@ export default function TokenScreen({ data }) {
         <div className="box burger">🍔</div>
         <div className="box panel">
           <div className="box" style={{ textAlign: "center" }}>
-            <span>
-              <i className="fas fa-indent"></i>
-            </span>
+            <Link href="/">
+              <a>
+                <i className="fas fa-indent"></i>
+              </a>
+            </Link>
           </div>
           <div className="primary-box" style={{ textAlign: "center" }}>
             <span>
