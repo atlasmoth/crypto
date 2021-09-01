@@ -11,8 +11,8 @@ export async function getStaticProps() {
     data.market = await api(
       "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=1&sparkline=true&price_change_percentage=7d"
     );
-    const list = await api(`https://api.coingecko.com/api/v3/coins/list`);
-    data.all = list.slice(0, 100);
+    data.all = await api(`https://api.coingecko.com/api/v3/coins/list`);
+
     const events = await api(`https://api.coingecko.com/api/v3/events`);
 
     data.events = events.data;

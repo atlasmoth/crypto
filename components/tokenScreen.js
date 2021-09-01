@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import DateRanger from "./dateRange";
 import MainChart from "./mainChart";
 import api from "./../utils/api";
+import Search from "./search";
 
 export default function TokenScreen({ data }) {
   const [state, setState] = useState({ start: null, end: null });
@@ -41,17 +42,8 @@ export default function TokenScreen({ data }) {
       </aside>
       <main className="container-main">
         <article className="main-article">
-          <header className="header">
-            <div className="search">
-              <span>🔍</span>
-              <input
-                type="search"
-                name="search"
-                id="search"
-                placeholder="search"
-                autoComplete="off"
-              />
-            </div>
+          <header className="header" style={{ position: "relative" }}>
+            <Search list={data.all} />
             <div className="date">
               <DateRanger setState={setState} />
             </div>
@@ -82,12 +74,12 @@ export default function TokenScreen({ data }) {
               <h3>Exchange</h3>
               <div className="content">
                 <p>Sell </p>
-                <p>{ticker.converted_last.usd}</p>
+                <p>{ticker?.converted_last.usd}</p>
                 <p>USD</p>
               </div>
               <div className="content">
                 <p>Buy </p>
-                <p>{ticker.converted_last.btc}</p>
+                <p>{ticker?.converted_last.btc}</p>
                 <p>BTC</p>
               </div>
               <div className="content">
@@ -101,7 +93,7 @@ export default function TokenScreen({ data }) {
                   </p>
                 </div>
                 <div className="primary-box">
-                  <a href={`${ticker.trade_url}`} target="_blank">
+                  <a href={`${ticker?.trade_url}`} target="_blank">
                     <span
                       style={{ display: "inline-block", marginRight: "2rem" }}
                     >

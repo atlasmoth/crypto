@@ -1,5 +1,6 @@
 import BasicChart from "./basicChart";
 import Link from "next/link";
+import Search from "./search";
 
 export default function HomeComponent({ data }) {
   return (
@@ -21,17 +22,8 @@ export default function HomeComponent({ data }) {
       </aside>
       <main className="container-main">
         <article className="main-article">
-          <header className="header">
-            <div className="search">
-              <span>🔍</span>
-              <input
-                type="search"
-                name="search"
-                id="search"
-                placeholder="search"
-                autoComplete="off"
-              />
-            </div>
+          <header className="header" style={{ position: "relative" }}>
+            <Search list={data.all} />
           </header>
           <div className="box box-split window">
             <h2>Market Leaders</h2>
@@ -68,7 +60,7 @@ export default function HomeComponent({ data }) {
           <div className="box box-split window">
             <h2>All Coins</h2>
             <div className="grid">
-              {data.all.map((d) => (
+              {data.all.slice(0, 20).map((d) => (
                 <div key={d.id} className="primary-box grid-box" key={d.symbol}>
                   <Link href={`/token/${d.id}`}>
                     <a>
@@ -92,7 +84,7 @@ export default function HomeComponent({ data }) {
                       padding: "5px",
                       borderRadius: "10px",
                       backgroundColor: "var(--main-dark)",
-                      color: "var(--blue) !important",
+                      color: "#2c64bc",
                       margin: "10px",
                     }}
                     href={d.website}

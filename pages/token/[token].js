@@ -20,6 +20,7 @@ export async function getServerSideProps(ctx) {
         1000
       }&to=${new Date().getTime() / 1000}`
     );
+    data.all = await api(`https://api.coingecko.com/api/v3/coins/list`);
   } catch (error) {
     console.log(error);
   } finally {

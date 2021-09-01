@@ -138,8 +138,8 @@ input[type="search"]::placeholder {
 }
 .grid{
   display : grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  grid-auto-rows : minmax(100px,auto);
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-auto-rows : minmax(50px,auto);
   grid-gap : 10px;
   padding : 1rem 5px;
 }
