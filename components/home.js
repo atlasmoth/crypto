@@ -1,5 +1,5 @@
 import BasicChart from "./basicChart";
-import Link from "next/link";
+
 import Search from "./search";
 
 export default function HomeComponent({ data }) {
@@ -8,12 +8,12 @@ export default function HomeComponent({ data }) {
       <aside className="container-aside">
         <div className="box burger">🍔</div>
         <div className="box panel">
-          <div className="primary-box">
-            <Link href="/">
-              <a>
-                <i className="fas fa-indent"></i>
-              </a>
-            </Link>
+          <div
+            className="primary-box"
+            onClick={() => (location.href = "/")}
+            style={{ cursor: "pointer" }}
+          >
+            <i className="fas fa-indent"></i>
           </div>
           <div className="box">
             <span>
@@ -31,31 +31,34 @@ export default function HomeComponent({ data }) {
             <h2>Market Leaders</h2>
             <div>
               {data.market.map((m) => (
-                <Link href={`/token/${m.id}`} key={m.id}>
-                  <a>
-                    <div className="primary-box box-split box-crypto">
-                      <div className="title">
-                        {m.id}&nbsp;({m.symbol})
-                      </div>
-                      <BasicChart data={m} />
-                      <div
-                        className={m.price_change_24h > 0 ? "green" : "red"}
-                        style={{ margin: "0 10px" }}
-                      >
-                        {Intl.NumberFormat("en-US", {
-                          style: "currency",
-                          currency: "USD",
-                        }).format(m.price_change_24h)}
-                      </div>
-                      <div className="title">
-                        {Intl.NumberFormat("en-US", {
-                          style: "currency",
-                          currency: "USD",
-                        }).format(m.current_price)}
-                      </div>
-                    </div>
-                  </a>
-                </Link>
+                <div
+                  className="primary-box box-split box-crypto"
+                  onClick={() => {
+                    location.href = `/token/${m.id}`;
+                  }}
+                  style={{ cursor: "pointer" }}
+                  key={m.symbol}
+                >
+                  <div className="title">
+                    {m.id}&nbsp;({m.symbol})
+                  </div>
+                  <BasicChart data={m} />
+                  <div
+                    className={m.price_change_24h > 0 ? "green" : "red"}
+                    style={{ margin: "0 10px" }}
+                  >
+                    {Intl.NumberFormat("en-US", {
+                      style: "currency",
+                      currency: "USD",
+                    }).format(m.price_change_24h)}
+                  </div>
+                  <div className="title">
+                    {Intl.NumberFormat("en-US", {
+                      style: "currency",
+                      currency: "USD",
+                    }).format(m.current_price)}
+                  </div>
+                </div>
               ))}
             </div>
           </div>
@@ -63,12 +66,18 @@ export default function HomeComponent({ data }) {
             <h2>All Coins</h2>
             <div className="grid">
               {data.all.slice(0, 20).map((d) => (
-                <div key={d.id} className="primary-box grid-box" key={d.symbol}>
-                  <Link href={`/token/${d.id}`}>
-                    <a>
-                      {d.name} ({d.symbol})
-                    </a>
-                  </Link>
+                <div
+                  key={d.id}
+                  className="primary-box grid-box"
+                  key={d.symbol}
+                  onClick={() => {
+                    location.href = `/token/${d.id}`;
+                  }}
+                  style={{ cursor: "pointer" }}
+                >
+                  <span>
+                    {d.name} ({d.symbol})
+                  </span>
                 </div>
               ))}
             </div>

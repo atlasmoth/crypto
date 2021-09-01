@@ -1,5 +1,4 @@
 import { memo, useEffect, useState } from "react";
-import Link from "next/link";
 
 function Search({ list }) {
   const [display, setDisplay] = useState(false);
@@ -18,19 +17,20 @@ function Search({ list }) {
         <div className="box floatSearch">
           <div className="contain">
             {keywords.map((k) => (
-              <Link href={`/token/${k.id}`} key={k.id + k.symbol}>
-                <a>
-                  <div
-                    style={{
-                      padding: "5px 0px",
-                      borderBottom: "1px solid rgba(255,255,255,.2)",
-                      borderCollapse: "collapse",
-                    }}
-                  >
-                    {k.name}
-                  </div>
-                </a>
-              </Link>
+              <div
+                style={{
+                  padding: "5px 0px",
+                  borderBottom: "1px solid rgba(255,255,255,.2)",
+                  borderCollapse: "collapse",
+                  cursor: "pointer",
+                }}
+                key={k.id + k.symbol}
+                onClick={() => {
+                  location.href = `/token/${k.id}`;
+                }}
+              >
+                {k.name}
+              </div>
             ))}
           </div>
         </div>
